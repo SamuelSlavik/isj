@@ -1,3 +1,7 @@
+# TEORIA 
+# new = zaistuje vytvorenie objektu
+# init = zaistuje inicializovanie objektu
+
 # REGEX ---------------------------------------------------------------------------------------------------------------------------
 
 # ?= | ?<= positive look ahead | behind
@@ -90,7 +94,7 @@ print(list(ng([1,2,3,4,5,6], 4)))
 
 # RESULT = [(1, 2, 3, 4), (2, 3, 4, 5), (3, 4, 5, 6)]
 
-# ------------------------------------------------ 
+# ------------------------------------------------ ------------------------------------
 
 # Pri s.add(1) se vypise:
 # Prvni se vola metoda add v IntList, ktera vypise "enter IntList".
@@ -114,6 +118,24 @@ print(list(ng([1,2,3,4,5,6], 4)))
 # primo tridu list?
 # Nebyl by dostupny atribut self._items. Nemohly by volat super().add(item),
 # protoze tuto metodu list neimplementuje. TL;DR: crash
+
+# ----------------------------------------------------------------------------------------------------
+
+# Priklad 3
+# Vypise se postupne:
+#   Third starts
+#   First starts
+#   Second starts
+#   Second ends
+#   First ends
+#   Third ends
+#
+#   Proc? Konstruktory se volaji postupne v poradi, v jakem jsou uvedeny.
+#   Tedy prvni se v konstruktoru tridy Third vypise "Third starts"
+#   a funkci super().__init__() se spusti konstruktor First,
+#   ktery vypise "First starts". Nasledne se funkci super().__init__() spusti
+#   konstruktor Second, vypise se "Second starts". Pote se vykona zbytek konstruktoru
+#   Second ("Second ends"), First ("First ends") a Third ("Third ends").
 
 
 
@@ -158,6 +180,7 @@ def first_with_given_key(iterable, key=lambda x: x):
             processed.add(key(item))
             yield item
 
+print(list(first_with_given_key([1,2,3,1,2,3])))
                  
             
             
